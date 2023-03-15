@@ -28,7 +28,47 @@ curs.execute("INSERT INTO users VALUES ('ANgelina', 21, 'woman', 7.9)")
 curs.execute("INSERT INTO users VALUES ('Hilary', 48, 'woman', 5.2)")
 """
 
+#felhasznalok kilistázása
+curs.execute("SELECT * FROM felhasznalok")
+# fetchall vissza adja az adatokat a táblából
+adatok = curs.fetchall()
+print(adatok)
+
+
+curs.execute("SELECT * FROM users")
+
+adatok2 = curs.fetchall()
+print(adatok2)
+
+#csak ha a neveket akarom
+
+curs.execute("SELECT name FROM users")
+adatok3 = curs.fetchall()
+print(adatok3)
+
+
+curs.execute("SELECT name, score FROM users")
+adatok4 = curs.fetchall()
+print(adatok4)
+
+
+#az adatok tuple-ként jelennek meg, nézd h sima zárójel!!!!!!!
+curs.execute("SELECT nev, pontszam FROM felhasznalok")
+adatok5 = curs.fetchall()
+print(adatok5)
+
+#"primary key"-féle megoldás. SQLite kicsit másképp kezeli a pkey-t
+curs.execute("SELECT nev, pontszam FROM felhasznalok WHERE ROWID=1")
+adatok6 = curs.fetchall()
+print(adatok6)
+
+
+
+
+
+
+
+
 #ez a sor nélkül beleinserteli de nem írja ki
 conn.commit()
-
 conn.close()
