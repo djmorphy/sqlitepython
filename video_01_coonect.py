@@ -1,5 +1,5 @@
 import  sqlite3
-
+from pprint import pprint
 
 #kapcsolat letrehozasa
 conn = sqlite3.connect("adatbazis.db")
@@ -19,6 +19,7 @@ curs.execute("CREATE TABLE IF NOT EXISTS users(name TEXT, age INTIGER, gender TE
 #curs.execute("INSERT INTO felhasznalok VALUES ('Évi', 34, 'Nő', 8.12)")
 #curs.execute("INSERT INTO felhasznalok VALUES ('Zoli', 41, 'Férfi', 7.1)")
 #curs.execute("INSERT INTO felhasznalok VALUES ('Pista', 51, 'Férfi', 3.1)")
+curs.execute("INSERT INTO felhasznalok VALUES ('Dani', 20, 'Férfi', 5.2)")
 
 """
 #azért van kommentelve ne adja újra hozzá köv. futtatáskor 
@@ -27,13 +28,29 @@ curs.execute("INSERT INTO users VALUES ('Jack', 48, 'man', 7.7)")
 curs.execute("INSERT INTO users VALUES ('ANgelina', 21, 'woman', 7.9)")
 curs.execute("INSERT INTO users VALUES ('Hilary', 48, 'woman', 5.2)")
 """
+curs.execute("UPDATE felhasznalok SET nem=? WHERE nem=?",("nő","Nő"))#a ? az placeholder. mire a mit a sorrend
+conn.commit()
+
+curs.execute("UPDATE felhasznalok SET nem=? WHERE nem=?",("férfi","Férfi"))#a ? az placeholder. mire a mit a sorrend
+conn.commit()
+
+
+curs.execute("UPDATE users SET gender=? WHERE gender=?",("female","woman"))#a ? az placeholder. mire a mit a sorrend
+conn.commit()
+
+curs.execute("UPDATE users SET gender=? WHERE gender=?",("male","man"))#a ? az placeholder. mire a mit a sorrend
+conn.commit()
+
+#elirást javítok gyakorlás képpen
+curs.execute("UPDATE users SET name=? WHERE name=?",("Angelina","ANgelina"))#a ? az placeholder. mire a mit a sorrend
+conn.commit()
 
 #felhasznalok kilistázása
 curs.execute("SELECT * FROM felhasznalok")
 # fetchall vissza adja az adatokat a táblából
 adatok = curs.fetchall()
 print(adatok)
-
+pprint(adatok)  #prityprint szebben tördeli
 
 curs.execute("SELECT * FROM users")
 
