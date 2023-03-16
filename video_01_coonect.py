@@ -19,7 +19,7 @@ curs.execute("CREATE TABLE IF NOT EXISTS users(name TEXT, age INTIGER, gender TE
 #curs.execute("INSERT INTO felhasznalok VALUES ('Évi', 34, 'Nő', 8.12)")
 #curs.execute("INSERT INTO felhasznalok VALUES ('Zoli', 41, 'Férfi', 7.1)")
 #curs.execute("INSERT INTO felhasznalok VALUES ('Pista', 51, 'Férfi', 3.1)")
-curs.execute("INSERT INTO felhasznalok VALUES ('Dani', 20, 'Férfi', 5.2)")
+#curs.execute("INSERT INTO felhasznalok VALUES ('Dani', 20, 'Férfi', 5.2)")
 
 """
 #azért van kommentelve ne adja újra hozzá köv. futtatáskor 
@@ -80,12 +80,17 @@ adatok6 = curs.fetchall()
 print(adatok6)
 
 
+#Felhasaználók hozzáadása
+#curs.execute("INSERT INTO felhasznalok VALUES ('István', 41, 'Férfi', 6.3)")
+#conn.commit()
 
-
-
+#Felhasználók TÖRLÉSE
+#curs.execute("DELETE FROM felhasznalok WHERE ROWID=13")
+#curs.execute("DELETE FROM felhasznalok WHERE pontszam < 6.5")
+#conn.commit()
 
 
 
 #ez a sor nélkül beleinserteli de nem írja ki
-conn.commit()
-conn.close()
+#conn.commit()
+#conn.close()
